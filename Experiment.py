@@ -1,8 +1,9 @@
 # coding : utf-8
 # Author : yuxiang Zeng
+import os
+import time
 import argparse
 import collections
-import time
 import numpy as np
 
 from modules.datasets.load_dataset import get_exper
@@ -12,10 +13,11 @@ from utils.logger import Logger
 from utils.monitor import EarlyStopping
 from utils.utils import set_seed, set_settings
 
-import os
+
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
 global log
+
 
 def RunOnce(args, runId, Runtime, log):
     # Set seed
@@ -38,7 +40,8 @@ def RunOnce(args, runId, Runtime, log):
         train_time.append(time_cost)
 
         if args.verbose and epoch % args.verbose == 0:
-            log.only_print(f"Round={runId+1} Epoch={epoch+1:02d} Loss={epoch_loss:.4f} vMAE={valid_error['MAE']:.4f} vRMSE={valid_error['RMSE']:.4f} vNMAE={valid_error['NMAE']:.4f} vNRMSE={valid_error['NRMSE']:.4f} time={sum(train_time):.1f} s")
+            log.only_print(
+                f"Round={runId + 1} Epoch={epoch + 1:02d} Loss={epoch_loss:.4f} vMAE={valid_error['MAE']:.4f} vRMSE={valid_error['RMSE']:.4f} vNMAE={valid_error['NMAE']:.4f} vNRMSE={valid_error['NRMSE']:.4f} time={sum(train_time):.1f} s")
 
         if monitor.early_stop:
             break
@@ -49,11 +52,11 @@ def RunOnce(args, runId, Runtime, log):
 
     results = model.test_one_epoch(dataModule) if args.valid else valid_error
 
-    log(f'Round={runId+1} BestEpoch={monitor.best_epoch:d} MAE={results["MAE"]:.4f} RMSE={results["RMSE"]:.4f} NMAE={results["NMAE"]:.4f} NRMSE={results["NRMSE"]:.4f} Training_time={sum_time:.1f} s\n')
+    log(f'Round={runId + 1} BestEpoch={monitor.best_epoch:d} MAE={results["MAE"]:.4f} RMSE={results["RMSE"]:.4f} NMAE={results["NMAE"]:.4f} NRMSE={results["NRMSE"]:.4f} Training_time={sum_time:.1f} s\n')
 
     return {
-        'MAE' : results["MAE"],
-        'RMSE' : results["RMSE"],
+        'MAE': results["MAE"],
+        'RMSE': results["RMSE"],
         'NMAE': results["NMAE"],
         'NRMSE': results["NRMSE"],
         'TIME': sum_time,
@@ -61,7 +64,6 @@ def RunOnce(args, runId, Runtime, log):
 
 
 def RunExperiments(log, args):
-
     log('*' * 20 + 'Experiment Start' + '*' * 20)
     metrics = collections.defaultdict(list)
 
@@ -79,10 +81,9 @@ def RunExperiments(log, args):
     if args.record:
         log.save_result(metrics)
 
-    log('*' * 20 + 'Experiment Success' + '*' * 20)
+    log('*' * 20 + 'Experiment Success!' + '*' * 20)
 
     return metrics
-
 
 
 if __name__ == '__main__':
@@ -134,7 +135,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
     set_settings(args)
 
-
     # Setup Logger
     log = Logger(args)
     args.log = log
@@ -144,4 +144,3 @@ if __name__ == '__main__':
 
     # Run Experiments
     RunExperiments(log, args)
-
