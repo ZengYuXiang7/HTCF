@@ -7,7 +7,7 @@ from torch.utils.data import DataLoader
 
 def get_dataloaders(train_set, valid_set, test_set, args):
     # max_workers = multiprocessing.cpu_count()
-    # max_workers = 1
+    # max_workers = 8
 
     train_loader = DataLoader(
         train_set,
@@ -24,7 +24,7 @@ def get_dataloaders(train_set, valid_set, test_set, args):
         drop_last=False,
         shuffle=False,
         pin_memory=True,
-        # num_workers=max_workers if platform.system() == 'Linux' else 0,
+        num_workers=max_workers if platform.system() == 'Linux' else 0,
         # prefetch_factor=4 if platform.system() == 'Linux' else 2
     )
     test_loader = DataLoader(
@@ -33,7 +33,7 @@ def get_dataloaders(train_set, valid_set, test_set, args):
         drop_last=False,
         shuffle=False,
         pin_memory=True,
-        # num_workers=max_workers if platform.system() == 'Linux' else 0,
+        num_workers=max_workers if platform.system() == 'Linux' else 0,
         # prefetch_factor=4 if platform.system() == 'Linux' else 2
     )
 

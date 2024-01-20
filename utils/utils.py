@@ -37,9 +37,10 @@ def set_seed(seed):
     t.cuda.manual_seed_all(seed)
     os.environ['PYTHONHASHSEED'] = str(seed)
 
-def to_cuda(inputs, values):
-    inputs = [tensor.to('cuda') for tensor in inputs]
-    values = values.to('cuda')
+def to_cuda(inputs, values, args):
+    import torch
+    inputs = [tensor.to(args.device) for tensor in inputs]
+    values = values.to(torch.float32).to(args.device)
     return inputs, values
 
 def optimizer_zero_grad(*optimizers):

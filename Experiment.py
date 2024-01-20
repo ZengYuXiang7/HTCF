@@ -92,7 +92,7 @@ if __name__ == '__main__':
     parser.add_argument('--rounds', type=int, default=5)
 
     parser.add_argument('--dataset', type=str, default='rt')  # rt tp
-    parser.add_argument('--model', type=str, default='NeuCF')  # NeuCF, CSMF, GraphMF, GATCF
+    parser.add_argument('--model', type=str, default='CF')  # NeuCF, CSMF, GraphMF, GATCF
 
     # Experiment
     parser.add_argument('--density', type=float, default=0.10)
@@ -105,7 +105,7 @@ if __name__ == '__main__':
     parser.add_argument('--path', nargs='?', default='./datasets/')
 
     # Training tool
-    parser.add_argument('--device', type=str, default='gpu')  # gpu cpu
+    parser.add_argument('--device', type=str, default='cpu')  # gpu cpu mps
     parser.add_argument('--bs', type=int, default=256)  # NeuCF 256 CSMF 256 GraphMF 256 GATCF 4096
     parser.add_argument('--lr', type=float, default=1e-3)
     parser.add_argument('--epochs', type=int, default=100)
