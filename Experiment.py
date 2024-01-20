@@ -81,7 +81,7 @@ def RunExperiments(log, args):
     if args.record:
         log.save_result(metrics)
 
-    log('*' * 20 + 'Experiment Success!' + '*' * 20)
+    log('*' * 20 + 'Experiment Success' + '*' * 20)
 
     return metrics
 

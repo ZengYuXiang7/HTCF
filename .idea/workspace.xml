@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd46c47f-c034-4f24-b57e-552389df5e48" name="变更" comment="变更">
-      <change beforePath="$PROJECT_DIR$/.idea/hypergraph.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hypergraph.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +215,7 @@
       <workItem from="1705642795847" duration="598000" />
       <workItem from="1705648810045" duration="675000" />
       <workItem from="1705651275662" duration="613000" />
-      <workItem from="1705665440725" duration="2185000" />
+      <workItem from="1705665440725" duration="2863000" />
     </task>
     <task id="LOCAL-00001" summary="变更">
       <option name="closed" value="true" />
